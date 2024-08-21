@@ -8,6 +8,24 @@ const SinValidator = () => {
   const handleSINChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSIN = event.target.value
     setSIN(newSIN)
+    validateSIN(newSIN)
+  }
+
+  const validateSIN = async (sin: string) => {
+    try {
+      const response = await fetch("/api/validate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sin }),
+      })
+      const { isValid } = await response.json()
+      setIsValid(isValid)
+    } catch (error) {
+      console.error("Error validating SIN:", error)
+      setIsValid(false)
+    }
   }
 
   return (
