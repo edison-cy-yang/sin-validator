@@ -3,8 +3,13 @@ interface ValidationResult {
   error?: string
 }
 
+/**
+ * Validate the SIN number
+ * @param sin - The SIN number to be validated
+ * @returns {ValidatedResult}
+ */
 export function validateSIN(sin: string): ValidationResult {
-  sin = sin.trim()
+  sin = sin.trim().replaceAll(" ", "")
 
   // 1. Digit Count
   if (sin.length !== 9) {
