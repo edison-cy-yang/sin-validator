@@ -2,35 +2,37 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+```
+npm install
+```
 
-```bash
+To run the development server:
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+To run production build:
+
+```
+npm run build
+```
+
+```
+npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Assumptions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Users can enter spaces in the SIN - spaces are ignored
+- We want to tell users why the SIN is invalid, incorrect number of characters, SIN contains non-numbers, or SIN didn't pass Luhn algorithm (no error detail for this one)
 
-## Learn More
+### Approach
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This was my first Next.js project. I picked the latest version 14 and app routes with api routing. Experimented with Tailwind and Daisy UI as well.\
+`isValid` boolean and `error` message are provided in the validateSIN method, which is stored in utils folder.\
+Typescript alias is used for components and utils folders.\
+The validator function first checks if the input has 9 characters and are numbers, then Luhn algorithm is implemented to check for SIN validity\
+Some component states were added to help with user experience.

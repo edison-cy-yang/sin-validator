@@ -1,4 +1,4 @@
-import { validateSIN } from "@utils/sinValidator"
+import { validateSIN } from "@utils/validateSIN"
 
 /**
  * POST endpoint on /api/validate

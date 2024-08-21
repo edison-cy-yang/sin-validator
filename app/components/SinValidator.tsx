@@ -50,8 +50,8 @@ const SinValidator = () => {
    * Call validateSIN() and set buttonClicked to true
    */
   const handleValidateSIN = (): void => {
-    validateSIN()
     setButtonClicked(true)
+    validateSIN()
   }
 
   return (
@@ -59,7 +59,11 @@ const SinValidator = () => {
       <div className="text-xl text-neutral-600 mb-5">SIN Validator</div>
       <input
         className={`input input-bordered w-full max-w-xs ${
-          buttonClicked ? (isValid ? "input-success" : "input-error") : ""
+          buttonClicked && !loading
+            ? isValid
+              ? "input-success"
+              : "input-error"
+            : ""
         }`}
         type="text"
         value={sin}
@@ -67,10 +71,10 @@ const SinValidator = () => {
         placeholder="Please enter the SIN number"
       ></input>
       <label className="label">
-        {!isValid && errorMessage && (
+        {buttonClicked && !isValid && errorMessage && (
           <span className="label-text-alt text-error">{errorMessage}</span>
         )}
-        {isValid && (
+        {buttonClicked && isValid && (
           <span className="label-text-alt text-success">This SIN is valid</span>
         )}
       </label>
