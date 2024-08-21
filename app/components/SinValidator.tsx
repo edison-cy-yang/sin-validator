@@ -40,9 +40,9 @@ const SinValidator = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="text-lg text-neutral-600">SIN Validator</div>
+      <div className="text-xl text-neutral-600 mb-5">SIN Validator</div>
       <input
-        className={`input input-primary input-bordered w-full max-w-xs ${
+        className={`input input-bordered w-full max-w-xs ${
           buttonClicked ? (isValid ? "input-success" : "input-error") : ""
         }`}
         type="text"
@@ -58,10 +58,7 @@ const SinValidator = () => {
           <span className="label-text-alt text-success">This SIN is valid</span>
         )}
       </label>
-      <button
-        className="btn btn-primary btn-outline"
-        onClick={handleValidateSIN}
-      >
+      <button className="btn btn-outline" onClick={handleValidateSIN}>
         Validate SIN
       </button>
     </div>

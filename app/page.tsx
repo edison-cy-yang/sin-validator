@@ -2,7 +2,7 @@ import SinValidator from "@components/SinValidator"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12">
+    <main className="min-h-screen h-full p-12">
       <SinValidator />
     </main>
   )
