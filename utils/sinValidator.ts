@@ -1,13 +1,24 @@
-export function validateSIN(sin: string): boolean {
+interface ValidationResult {
+  isValid: boolean
+  error?: string
+}
+
+export function validateSIN(sin: string): ValidationResult {
   sin = sin.trim()
 
   // 1. Digit Count
   if (sin.length !== 9) {
-    return false
+    return {
+      isValid: false,
+      error: "This SIN is invalid. A valid SIN should have 9 digits.",
+    }
   }
 
   if (!/^\d+$/.test(sin)) {
-    return false
+    return {
+      isValid: false,
+      error: "This SIN is invalid. A valid SIN can only contain numbers.",
+    }
   }
 
   // 2. Luhn Algorithm
@@ -26,5 +37,12 @@ export function validateSIN(sin: string): boolean {
   }
 
   // Checksum Validation
-  return sum % 10 === 0
+  const checkSumValid = sum % 10 === 0
+
+  return checkSumValid? {
+    isValid: true
+  } : {
+    isValid: false,
+    error: "This SIN is invalid"
+  }
 }
